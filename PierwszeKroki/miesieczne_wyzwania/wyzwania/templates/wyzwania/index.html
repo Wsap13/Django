@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wyzwania</title>
-</head>
-
-<body>
-    <ul>
-        {% for m in months %}
-        <li><a href="{%url "miesieczne_wyzwanie" m %}",args[month]>{{ m|title }}</a></li>
-        {% endfor %}
-    </ul>
-</body>
-
-</html>
+    {% block page_title %}
+        Moje wyzwania
+    {% endblock %}
+    {% block content %}
+        <h1>Wyzwania</h1>
+        <ul>
+            {% for m in months %}
+                <li><a href="{%url "miesieczne_wyzwanie" m %}",args[month]>{{ m|title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endblock %}

@@ -46,4 +46,5 @@ def miesieczne_wyzwania(request, miesiac):
             "miesiac": miesiac
         })
     except:
-        return HttpResponseNotFound("<h1>You fucked up!</h1>")
+        response_data = render_to_string("404.html")
+        return HttpResponseNotFound(response_data)
