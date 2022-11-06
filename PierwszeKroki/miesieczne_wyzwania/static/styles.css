@@ -6,6 +6,7 @@ html{
 
 body{
     margin: 0;
-    background: rgb(193,152,83);
-    background: radial-gradient(circle, rgba(193,152,83,1) 0%, rgba(17,101,173,1) 100%);
+    background-color: #f7f4ee;
+    
+    
 }

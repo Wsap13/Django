@@ -3,22 +3,29 @@ ul {
     margin: 2rem auto;
     max-width: 20rem;
     width: 90%;
-    box-shadow:  0 2px 8px rgb(219, 44, 44) ;
+    box-shadow:  0 2px 8px #db2c2c ;
     padding: 1rem;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 30rem;
 }
 
 li{
     margin: 1rem 0;
     text-align: center;
     font-size: 1.5rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #db2c2c;
     padding-bottom: 0.5rem;
 }
 
-h1{
-    margin: 1rem 0;
-    text-align: center;
-    font-size: 4rem;
-    border-bottom: 1px solid #ccc;
+li a{
+    text-decoration: none;
+    color: #3f2020;
+}
+
+li a:hover,
+li a:active{
+    color: #ff0000;
 }
