@@ -1,3 +1,24 @@
 ul {
     list-style: none;
+    margin: 2rem auto;
+    max-width: 20rem;
+    width: 90%;
+    box-shadow:  0 2px 8px rgb(219, 44, 44) ;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+li{
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
+h1{
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 4rem;
+    border-bottom: 1px solid #ccc;
 }
