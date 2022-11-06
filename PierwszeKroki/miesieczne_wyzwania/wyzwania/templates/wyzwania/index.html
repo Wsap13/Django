@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
-    {% block page_title %}
-        Moje wyzwania
-    {% endblock %}
-    {% block content %}
-        <h1>Wyzwania</h1>
-        <ul>
-            {% for m in months %}
-                <li><a href="{%url "miesieczne_wyzwanie" m %}",args[month]>{{ m|title }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endblock %}
+{% block css_files%}
+    <link rel="stylesheet" href="{% static "wyzwania/wyzwania.css" %}">
+{% endblock %}
+
+{% block page_title %}
+    Moje wyzwania
+{% endblock %}
+
+{% block content %}
+    <h1>Wyzwania</h1>
+    <ul>
+        {% for m in months %}
+            <li><a href="{%url "miesieczne_wyzwanie" m %}",args[month]>{{ m|title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
