@@ -1,15 +1,20 @@
+
 {% extends 'base.html' %}
+{% load  static %}
 
     {% block page_title %}
         {{miesiac|title}}
     {% endblock %}
-
+    {% block css_files%}
+    <link rel="stylesheet" href="{% static "wyzwania/includes/header.css" %}">
+    <link rel="stylesheet" href="{% static "wyzwania/wyzwania.miesiac.css" %}">    
+    {% endblock %}
     {% block content %}
         {% include "wyzwania/includes/header.html" %}
         
         <h1>Wyzwanie na {{miesiac|title}}:</h1>
         {% if klucz is not None %}
-        <h2>{{ klucz }}</h2>
+            <h2>{{ klucz }}</h2>
         {% else %}
             <p> Nie ma wyzwania na {{miesiac}}!</p>
         {% endif %}

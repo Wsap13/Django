@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Wyzwania</h1>
+{% include "wyzwania/includes/header.html"%}
     <ul>
         {% for m in months %}
             <li><a href="{%url "miesieczne_wyzwanie" m %}",args[month]>{{ m|title }}</a></li>

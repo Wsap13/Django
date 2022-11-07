@@ -3,13 +3,14 @@ ul {
     margin: 2rem auto;
     max-width: 20rem;
     width: 90%;
-    box-shadow:  0 2px 8px #db2c2c ;
+    box-shadow:  0 2px 8px #ffffff ;
     padding: 1rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     height: 30rem;
+    background-color: rgb(255, 255, 255);
 }
 
 li{
@@ -29,3 +30,4 @@ li a:hover,
 li a:active{
     color: #ff0000;
 }
+
