@@ -6,7 +6,7 @@ def strona_startowa(request):
   return render(request, "blog/index.html")
 
 def posty(request):
-  pass
+   return render(request, "blog/all-posts.html")
 
 def posty_szczegol(request):
   pass

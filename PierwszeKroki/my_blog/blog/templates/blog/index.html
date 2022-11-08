@@ -11,12 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<header id="main-navigation">
-    <h1><a href=""> Strona główna</a></h1>
-    <nav>
-        <a href=""> Wszystkie posty</a></h1>
-    </nav>
-</header>
+
 
 <section id="welcome">
     <header>
@@ -30,20 +25,11 @@
 <section id = "latest-posts">
     <h2>Moje ostatnie posty </h2> 
     <ul>
-        <li>
-            <article class="post">
-                <a href="">
-                    <img src="{% static "blog/images/jpg1.jpg" %}" alt="Łucznictwo" />
-                    <div class="post__content">
-                        <h3>Łucznictwo</h3>
-                        <p>Nie ma to jak trening, na tle natury razem ze 
-                            znajomymi w piękne sierpniowe popołudnie! </p>
-                    </div>
-                </a>
-        </li>
+       {% include "blog/includes/post.html" %}
     </ul>
 
 </section>
+
 <section id="about">
 <h2>O mnie</h2>
     <p>Jestem studentem informatyki trzeciego roku. Interesuję 
