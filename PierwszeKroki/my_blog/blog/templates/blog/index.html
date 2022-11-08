@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block css_files%}
+    <link rel="stylesheet" href="{% static "blog/index.css" %}">
+{% endblock %}
 
 
 {% block page_title %}
@@ -13,16 +17,17 @@
         <a href=""> Wszystkie posty</a></h1>
     </nav>
 </header>
+
 <section id="welcome">
     <header>
         <img src="" alt="Mateusz - Autor bloga" />
         <h2> MÓJ BLOG </h2>
     </header>
-    </p>Cześć, nazywam się Mateusz chciałbym się 
+    <p>Cześć, nazywam się Mateusz chciałbym się 
     podzielić z wami moimi doświadczeniami z życia codziennego.</p>
 </section>
 
-<section id = "latests-posts">
+<section id = "latest-posts">
     <h2>Moje ostatnie posty </h2> 
     <ul>
         <li>
