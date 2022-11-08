@@ -39,12 +39,12 @@
   }
   
   #welcome img {
-    width: 10rem;
-    height: 10rem;
+    width: 12rem;
+    height: 12rem;
     object-fit: cover;
     object-position: top;
     border: 5px solid white;
-    border-radius: 12px;
+    border-radius: 2px;
     background-color: #ffe1bf;
     transform: rotateZ(-5deg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -65,7 +65,7 @@
   #latest-posts {
     background-color: white;
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: 5rem;
     width: 60rem;
     margin: -6rem auto 2rem auto;
     box-shadow: 1px 1px 12px rgba(62, 62, 62, 0.4);
