@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+
+{% block page_title %}
+    Mój blog
+{% endblock %}
+
+{% block content %}
+<header id="main-navigation">
+    <h1><a href=""> Strona główna</a></h1>
+    <nav>
+        <a href=""> Wszystkie posty</a></h1>
+    </nav>
+</header>
+<section id="welcome">
+    <header>
+        <img src="" alt="Mateusz - Autor bloga" />
+        <h2> MÓJ BLOG </h2>
+    </header>
+    </p>Cześć, nazywam się Mateusz chciałbym się 
+    podzielić z wami moimi doświadczeniami z życia codziennego.</p>
+</section>
+
+<section id = "latests-posts">
+    <h2>Moje ostatnie posty </h2> 
+    <ul>
+        <li>
+            <article class="post">
+                <a href="">
+                    <img src="" alt="Łucznictwo" />
+                    <div class="post__content">
+                        <h3>Łucznictwo</h3>
+                        <p>Nie ma to jak trening, na tle natury razem ze 
+                            znajomymi w piękne sierpniowe popołudnie! </p>
+                    </div>
+                </a>
+        </li>
+    </ul>
+
+</section>
+<section id="about">
+<h2>O mnie</h2>
+    <p>Jestem studentem informatyki trzeciego roku. Interesuję 
+        się informatyką oraz ogólnym rozwojem technologii.
+         Ale ponad to lubię grać! Dosłownie we wszystko 
+         planszówki, gry komputerowe a także drużynowe 
+         na świeżym powietrzu.
+    </p>
+    <p>Moim celem jest rozwijanie się jako developer - 
+        i jeśli mógłbym ci jakoś w tym pomóc bardzo chętnie pomogę.
+    </p>
+</section>
+{% endblock %}
