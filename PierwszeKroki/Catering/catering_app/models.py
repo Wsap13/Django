@@ -6,7 +6,7 @@ class pracownicy(models.Model):
     naziwsko = models.CharField(max_length=45)
     stanowisko = models.CharField(max_length=45)
     pensja = models.IntegerField()
-    pensja = models.IntegerField(max_length=11)   
+    pensja = models.IntegerField()   
 
 class dostawca(models.Model):
     towary = models.CharField(max_length=45)
