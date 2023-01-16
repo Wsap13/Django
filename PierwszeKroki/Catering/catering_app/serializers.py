@@ -1,85 +1,73 @@
 from rest_framework import serializers
-from .models import pracownicy, magazyn, posilki, klient
-import string
+from .models import *
 import datetime
+from rest_framework import permissions
 
-
-class pracownicySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = pracownicy
-        fields = ['imie', 'nazwisko', 'stanowisko', 'stanowisko', 'pensja', 'pesel']
-
-    def validate_imie(self, value):
-        if value[0] in string.ascii_lowercase:
-            raise serializers.ValidationError(
-                "Imiona zaczynają się z dużej litery"
-            )
-        else:
-            return value
-
-    def validate_nazwisko(self, value):
-        if value[0] in string.ascii_lowercase:
-            raise serializers.ValidationError(
-                "Nazwiska zaczynają się z dużej litery"
-            )
-        else:
-            return value
-
-    def validate_pensja(self, value):
-        if value.any() <= 0:
-            raise serializers.ValidationError(
-                "Pensja nie może być mniejsza równa zero"
-            )
-        else:
-            return value
-
-class magazynSerializer(serializers.HyperlinkedModelSerializer):
-    dostawca_towaru = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='') #zrobic widok i uzupelnic
-        
-    class Meta:
-            model = magazyn
-            fields = ['towary', 'ilosc','data_przydatnosci', 'dostawca_towaru']
+class PracownicySerializer(serializers.HyperlinkedModelSerializer):
     
-    def validate_ilosc(self, value):
-        if value.any() < 0:
-            raise serializers.ValidationError(
-                "Ilosc towaru nie może być mniejsza niż zero"
-            )
-        else:
-            return value
-
-    def validate_dataPrzydatnosci(self, value):
-        if value.any() < datetime.datetime.now:
-            raise serializers.ValidationError(
-                "Nie można przechowywać żywności po terminie."
-            )
-        else:
-            return value
-
-class posilkiSerializer(serializers.HyperlinkedModelSerializer):
-        
     class Meta:
-            model = posilki
+        stanowisko = serializers.ChoiceField(choices=Pracownicy.STANOWISKO_CHOICES)
+        model = Pracownicy
+        fields = ['id','imie', 'nazwisko', 'stanowisko', 'pensja', 'pesel']
+    
+    def validate_pensja(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("Pensja musi być większa od zera", )
+        return value
+
+    # def validate_imie(self, value):
+    #     if value[0] in string.ascii_lowercase:
+    #         raise serializers.ValidationError(
+    #             "Imiona zaczynają się z dużej litery"
+    #         )
+    #     else:
+    #         return value
+
+    # def validate_nazwisko(self, value):
+    #     if value[0] in string.ascii_lowercase:
+    #         raise serializers.ValidationError(
+    #             "Nazwiska zaczynają się z dużej litery"
+    #         )
+    #     else:
+    #         return value
+
+    # def validate_pensja(self, value):
+    #     if value.any() <= 0:
+    #         raise serializers.ValidationError(
+    #             "Pensja nie może być mniejsza równa zero"
+    #         )
+    #     else:
+    #         return value
+
+class MagazynSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+            model = Magazyn
+            fields = ['towary', 'ilosc','data_przydatnosci']
+
+    def validate_ilosc(self, value):
+        if value < 0:
+            raise serializers.ValidationError("Ilosc nie moze byc mniejsza od zera", )
+        return value
+
+class PosilkiSerializer(serializers.HyperlinkedModelSerializer):
+    typ = serializers.ChoiceField(choices=Posilki.TYP_CHOICES)
+    class Meta:
+            model = Posilki
             fields = ['posilek_nazwa', 'cena','typ']
 
     def validate_cena(self, value):
-        if value.any() <= 0:
-            raise serializers.ValidationError(
-                "Cena nie może być mniejsza równa zero"
-            )
-        else:
-            return value
+        if value <= 0:
+            raise serializers.ValidationError("Cena musi być większa od zera", )
+        return value
 
-class klientSerializer(serializers.HyperlinkedModelSerializer):
-        
+class KlientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-            model = klient
-            fields = ['zamowienie', 'do-zaplaty','adres_klienta']
+            model = Klient
+            fields = ['id','imie_klienta', 'nazwisko_klienta','adres_klienta']
 
-    def validate_cena(self, value):
-        if value.any() <= 0:
-            raise serializers.ValidationError(
-                "Cena nie może być mniejsza równa zero"
-            )
-        else:
-            return value            
+class ZamowieniaSerializer(serializers.HyperlinkedModelSerializer):
+    klient_id = serializers.SlugRelatedField(queryset=Klient.objects.all(), slug_field='id')
+    posilki = serializers.SlugRelatedField(queryset=Posilki.objects.all(), slug_field='posilek_nazwa')
+    class Meta:
+            model = Zamowienia
+            fields = ['id','suma','posilki' ,'data','klient_id']
